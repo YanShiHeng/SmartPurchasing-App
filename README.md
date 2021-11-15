@@ -2,7 +2,7 @@
 
 #### vue项目的解构
 ```
-|—— vue-lesson
+|—— vue
     |—— public                   // 静态页面文件包，不会对这个文件包进行编译
         |—— index.html           // 项目的入口页面
         |—— favicon.ico          // 项目的偏好图标
