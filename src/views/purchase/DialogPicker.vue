@@ -1,26 +1,14 @@
 <template>
-  <van-popup
-    v-model="show"
-    position="right"
-    @click-overlay="closeEvt"
-    :style="{ height: '100%', width: '80%' }"
-  >
+  <van-popup v-model="show" position="right" @click-overlay="closeEvt" :style="{ height: '100%', width: '80%' }">
     <ul v-if="list.length > 0" class="picker-list">
       <li @click="pickEvt($event, item)" v-for="item in ulLis" :key="item.id">
         {{ item.name }}
       </li>
       <!-- 分页组件 -->
-      <van-pagination
-        v-if="list.length > 15"
-        v-model="currentPage"
-        :total-items="list.length"
-        :items-per-page="15"
-      />
+      <van-pagination v-if="list.length > 15" v-model="currentPage" :total-items="list.length" :items-per-page="15" />
 
       <!-- 多选的确定按钮 -->
-      <van-button @click="sureEvt" round block v-if="isDX" color="#ff5513"
-        >确定</van-button
-      >
+      <van-button @click="sureEvt" round block v-if="isDX" color="#ff5513">确定</van-button>
     </ul>
     <span v-else>数据请求中</span>
   </van-popup>
@@ -113,7 +101,8 @@ export default {
       // 如果是多选，则给selectedData添加数据，否则直接把数据返回到父组件中
       if (this.isDX) {
         //判断被点击的选项是否包含liBg这个类名来表示该选项是否已被选择，如果已被选择之后再点击则为取消选择
-        if (evt.target.classList.contains("liBg")) {//已有此类名
+        if (evt.target.classList.contains("liBg")) {
+          //已有此类名
           evt.target.classList.remove("liBg");
           //删除this.selectedData中对应的数据，即取消选中时并删除此审批人数据
           this.selectedData.map((it, k) => {
@@ -123,7 +112,8 @@ export default {
           evt.target.classList.add("liBg");
           this.selectedData.push(item);
         }
-      } else {//不是多选则直接提交数据到父组件中
+      } else {
+        //不是多选则直接提交数据到父组件中
         this.$emit("pickEvt", item, this.type);
         this.$emit("update:show", false);
       }

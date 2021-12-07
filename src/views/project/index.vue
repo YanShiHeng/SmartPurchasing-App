@@ -5,11 +5,11 @@
         <div class="left">
           <span class="title">{{ item.name }}</span>
           <span class="text">负责人：{{ item.ownerName }}</span>
-          <span class="text"
-            >签订日期：{{
+          <span class="text">
+            签订日期：{{
               item.signTime | dateFormat("yyyy-MM-DD hh:mm:ss")
-            }}</span
-          >
+            }}
+          </span>
           <span class="text">地址：{{ item.address }}</span>
         </div>
         <div class="right">
@@ -56,9 +56,9 @@ export default {
         this.hasMore = this.query.page * this.query.size < result.data.total;
       }
       //因为赋值是异步的，因此每次加载完成数据以后，要执行一个setTimeout来阻断页面刷新
-      //   setTimeout(() => {
-      this.isLoading = false;
-      //   });
+      setTimeout(() => {
+        this.isLoading = false;
+      });
     },
     //滚动加载内容
     scrollEvent(eve) {

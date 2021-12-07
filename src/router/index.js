@@ -2,14 +2,24 @@ import Vue from 'vue' // 引入Vue
 // 引入router插件
 import Router from 'vue-router'
 // 引入页面路由组件
-import Login from '../views/login'
-import Home from '../views/home'
-import NotFound from '../views/common/NotFound'
-import ProductEdit from '../views/product/edit'
-import ProjectList from '../views/project'
-import Purchase from '../views/purchase'
-import PurchaseDetail from '../views/purchase/Detail'
-import PurchaseEdit from '../views/purchase/Edit'
+// 动态引入
+const Login =()=>import( '../views/login')
+const Home =()=>import( '../views/home')
+const NotFound =()=>import( '../views/common/NotFound')
+const ProductEdit =()=>import( '../views/product/edit')
+const ProjectList =()=>import( '../views/project')
+const Purchase =()=>import( '../views/purchase')
+const PurchaseDetail =()=>import( '../views/purchase/Detail')
+const PurchaseEdit =()=>import( '../views/purchase/Edit')
+
+// import Login from '../views/login'
+// import Home from '../views/home'
+// import NotFound from '../views/common/NotFound'
+// import ProductEdit from '../views/product/edit'
+// import ProjectList from '../views/project'
+// import Purchase from '../views/purchase'
+// import PurchaseDetail from '../views/purchase/Detail'
+// import PurchaseEdit from '../views/purchase/Edit'
 // 因为在vue实例对象中使用this.$store的时候，这个对象指向的是  src/store/index.js文件中的store实例
 // 因为这个页面不是一个vue文件，所以没有this对象，因此在使用store实例的时候需要自行引入store实例
 import store from '../store'

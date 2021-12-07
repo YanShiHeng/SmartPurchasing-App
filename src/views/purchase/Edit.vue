@@ -3,53 +3,21 @@
     <van-form @submit="onSubmit">
       <p class="my-title">基础信息</p>
       <!-- 创建人 -->
-      <van-field
-        v-model="pageData.createName"
-        name="创建人"
-        label="创建人"
-        readonly
-        placeholder="请填写创建人"
-      />
+      <van-field v-model="pageData.createName" name="创建人" label="创建人" readonly placeholder="请填写创建人" />
       <!-- 创建时间 -->
-      <van-field
-        v-model="pageData.createTime"
-        name="创建时间"
-        label="创建时间"
-        readonly
-        placeholder="请选择创建时间"
-        :rules="[{ required: true, message: '请选择创建时间' }]"
-      >
+      <van-field v-model="pageData.createTime" name="创建时间" label="创建时间" readonly placeholder="请选择创建时间" :rules="[{ required: true, message: '请选择创建时间' }]">
         <!-- 表单中的单选框 -->
         <template #button>
-          <van-button
-            size="small"
-            color="#ff5513"
-            type="primary"
-            native-type="button"
-            @click="timeShow = true"
-          >
+          <van-button size="small" color="#ff5513" type="primary" native-type="button" @click="timeShow = true">
             选择日期
           </van-button>
         </template>
       </van-field>
       <!-- 项目名称 -->
-      <van-field
-        v-model="pageData.projectName"
-        name="项目名称"
-        label="项目名称"
-        readonly
-        placeholder="请选择项目"
-        :rules="[{ required: true, message: '请选择项目' }]"
-      >
+      <van-field v-model="pageData.projectName" name="项目名称" label="项目名称" readonly placeholder="请选择项目" :rules="[{ required: true, message: '请选择项目' }]">
         <!-- 表单中的单选框 -->
         <template #button>
-          <van-button
-            size="small"
-            color="#ff5513"
-            type="primary"
-            native-type="button"
-            @click="pickerOpenEvt('project')"
-          >
+          <van-button size="small" color="#ff5513" type="primary" native-type="button" @click="pickerOpenEvt('project')">
             选择项目
           </van-button>
         </template>
@@ -57,139 +25,55 @@
       <!-- 材料信息 -->
       <p class="my-title">材料信息</p>
       <!-- 材料名称 -->
-      <van-field
-        v-model="pageData.materialName"
-        name="材料名称"
-        label="材料名称"
-        readonly
-        placeholder="请选择材料"
-        :rules="[{ required: true, message: '请选择材料' }]"
-      >
+      <van-field v-model="pageData.materialName" name="材料名称" label="材料名称" readonly placeholder="请选择材料" :rules="[{ required: true, message: '请选择材料' }]">
         <template #button>
-          <van-button
-            size="small"
-            color="#ff5513"
-            native-type="button"
-            @click="pickerOpenEvt('material')"
-            type="primary"
-          >
+          <van-button size="small" color="#ff5513" native-type="button" @click="pickerOpenEvt('material')" type="primary">
             选择材料
           </van-button>
         </template>
       </van-field>
       <!-- 采购数量 -->
-      <van-field
-        v-model.number="pageData.materialWeight"
-        type="number"
-        name="采购数量"
-        label="采购数量"
-        placeholder="请填写采购数量"
-        :rules="[
+      <van-field v-model.number="pageData.materialWeight" type="number" name="采购数量" label="采购数量" placeholder="请填写采购数量" :rules="[
           { required: true, message: '请填写采购数量' },
           { validator, message: '请填写正确的数字' },
-        ]"
-      />
+        ]" />
       <!-- 材料单位 -->
-      <van-field
-        v-model.trim="pageData.materialUnit"
-        name="材料单位"
-        label="材料单位"
-        placeholder="请填写材料单位"
-        :rules="[{ required: true, message: '请选择材料' }]"
-      />
+      <van-field v-model.trim="pageData.materialUnit" name="材料单位" label="材料单位" placeholder="请填写材料单位" :rules="[{ required: true, message: '请选择材料' }]" />
       <!-- 材料单价 -->
-      <van-field
-        v-model.number="pageData.price"
-        type="number"
-        name="单价"
-        label="单价"
-        placeholder="请填写单价"
-        :rules="[
+      <van-field v-model.number="pageData.price" type="number" name="单价" label="单价" placeholder="请填写单价" :rules="[
           { required: true, message: '请填写单价' },
           { validator, message: '请填写正确的数字' },
-        ]"
-      />
+        ]" />
       <!-- 供应商信息 -->
       <p class="my-title">供应商信息</p>
       <!-- 供应商名称 -->
-      <van-field
-        v-model="pageData.supplierName"
-        name="供应商名称"
-        label="供应商名称"
-        readonly
-        placeholder="请选择供应商"
-        :rules="[{ required: true, message: '请选择供应商' }]"
-      >
+      <van-field v-model="pageData.supplierName" name="供应商名称" label="供应商名称" readonly placeholder="请选择供应商" :rules="[{ required: true, message: '请选择供应商' }]">
         <template #button>
-          <van-button
-            size="small"
-            color="#ff5513"
-            native-type="button"
-            @click="pickerOpenEvt('supplier')"
-            type="primary"
-            >选择供应商</van-button
-          >
+          <van-button size="small" color="#ff5513" native-type="button" @click="pickerOpenEvt('supplier')" type="primary">选择供应商</van-button>
         </template>
       </van-field>
       <!-- 联系人 -->
-      <van-field
-        v-model="pageData.supplierContact"
-        name="联系人"
-        label="联系人"
-        readonly
-        placeholder="联系人"
-      />
+      <van-field v-model="pageData.supplierContact" name="联系人" label="联系人" readonly placeholder="联系人" />
       <!-- 联系电话 -->
-      <van-field
-        v-model="pageData.supplierPhone"
-        name="联系电话"
-        label="联系电话"
-        readonly
-        placeholder="联系电话"
-      />
+      <van-field v-model="pageData.supplierPhone" name="联系电话" label="联系电话" readonly placeholder="联系电话" />
       <!-- 审批信息 -->
       <p class="my-title">审批信息</p>
       <!-- 审批人 -->
-      <van-field
-        name="审批人"
-        label="审批人"
-        :value="selectUser.length + '个人'"
-        readonly
-        placeholder="请选择审批人"
-      >
+      <van-field name="审批人" label="审批人" :value="selectUser.length + '个人'" readonly placeholder="请选择审批人">
         <template #button>
-          <van-button
-            size="small"
-            color="#ff5513"
-            native-type="button"
-            @click="pickerOpenEvt('user')"
-            type="primary"
-            >选择审批人</van-button
-          >
+          <van-button size="small" color="#ff5513" native-type="button" @click="pickerOpenEvt('user')" type="primary">选择审批人</van-button>
         </template>
       </van-field>
       <!-- 备注 -->
-      <van-field
-        v-model="pageData.remark"
-        name="备注"
-        label="备注"
-        placeholder="请输入备注"
-      />
+      <van-field v-model="pageData.remark" name="备注" label="备注" placeholder="请输入备注" />
       <div style="margin: 16px">
-        <van-button round block color="#ff5513" native-type="submit"
-          >提交</van-button
-        >
+        <van-button round block color="#ff5513" native-type="submit">提交</van-button>
       </div>
     </van-form>
     <!-- 日历组件 -->
     <van-calendar v-model="timeShow" @confirm="timeConfirm" />
     <!-- 弹出框组件 -->
-    <dialog-picker
-      @pickEvt="pickerEvent"
-      :type="dialogType"
-      :isDX="isDX"
-      :show.sync="dialogShow"
-    ></dialog-picker>
+    <dialog-picker @pickEvt="pickerEvent" :type="dialogType" :isDX="isDX" :show.sync="dialogShow"></dialog-picker>
   </page-layout>
 </template>
 <script>

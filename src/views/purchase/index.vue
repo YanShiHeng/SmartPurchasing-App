@@ -1,11 +1,7 @@
 <template>
   <page-layout :showNew="true" text="管理采购单" @btnEvt="toNewPage">
     <header class="my-header">
-      <input
-        type="text"
-        v-model="query.projectName"
-        placeholder="输入项目名进行查询"
-      />
+      <input type="text" v-model="query.projectName" placeholder="输入项目名进行查询" />
       <van-dropdown-menu>
         <van-dropdown-item v-model="query.state" :options="option1" />
       </van-dropdown-menu>
@@ -16,12 +12,7 @@
         <van-swipe-cell>
           <!-- #left指定插槽的名字 -->
           <template #left>
-            <van-button
-              square
-              type="primary"
-              text="详情"
-              @click="btnEvt(item, 'detail')"
-            />
+            <van-button square type="primary" text="详情" @click="btnEvt(item, 'detail')" />
           </template>
           <div class="my-left">
             <span class="title">
@@ -29,9 +20,7 @@
               <em>{{ item.state }}</em>
             </span>
             <span class="text">创建人：{{ item.createName }}</span>
-            <span class="text"
-              >创建日期：{{ item.createTime | dateFormat("yyyy-MM-DD") }}</span
-            >
+            <span class="text">创建日期：{{ item.createTime | dateFormat("yyyy-MM-DD") }}</span>
             <span class="text">
               材料：{{
                 `${item.materialName} -- ${item.materialWeight}${item.materialUnit}`
@@ -46,50 +35,12 @@
           <!-- 当数据的状态为：完成，显示付款 -->
           <!-- 每行按钮显示 -->
           <template #right>
-            <van-button
-              @click="btnEvt(item, 'delete')"
-              v-if="item.state === '新建'"
-              square
-              type="danger"
-              color="#ee0a25"
-              text="删除"
-            />
-            <van-button
-              @click="btnEvt(item, 'edit')"
-              v-if="item.state === '新建'"
-              square
-              type="primary"
-              color="#ff976a"
-              text="编辑"
-            />
-            <van-button
-              @click="btnEvt(item, 'confirm')"
-              v-if="item.state === '新建'"
-              square
-              color="#ff5b02"
-              text="确认"
-            />
-            <van-button
-              @click="btnEvt(item, 'inline')"
-              v-if="item.state === '确认'"
-              square
-              color="#7232dd"
-              text="在途"
-            />
-            <van-button
-              @click="btnEvt(item, 'finish')"
-              v-if="item.state === '在途'"
-              square
-              color="#ff5b02"
-              text="完成"
-            />
-            <van-button
-              @click="btnEvt(item, 'payment')"
-              v-if="item.state === '完成'"
-              square
-              color="#7232de"
-              text="付款"
-            />
+            <van-button @click="btnEvt(item, 'delete')" v-if="item.state === '新建'" square type="danger" color="#ee0a25" text="删除" />
+            <van-button @click="btnEvt(item, 'edit')" v-if="item.state === '新建'" square type="primary" color="#ff976a" text="编辑" />
+            <van-button @click="btnEvt(item, 'confirm')" v-if="item.state === '新建'" square color="#ff5b02" text="确认" />
+            <van-button @click="btnEvt(item, 'inline')" v-if="item.state === '确认'" square color="#7232dd" text="在途" />
+            <van-button @click="btnEvt(item, 'finish')" v-if="item.state === '在途'" square color="#ff5b02" text="完成" />
+            <van-button @click="btnEvt(item, 'payment')" v-if="item.state === '完成'" square color="#7232de" text="付款" />
           </template>
         </van-swipe-cell>
       </li>
@@ -101,13 +52,7 @@
     </ul>
     <!-- 采购流程步骤 -->
     <!-- vant弹出层+步骤条+单选框 -->
-    <van-popup
-      v-model="show"
-      round
-      :close-on-click-overlay="false"
-      position="bottom"
-      :style="{ height: '35%' }"
-    >
+    <van-popup v-model="show" round :close-on-click-overlay="false" position="bottom" :style="{ height: '35%' }">
       <!-- 步骤条 -->
       <van-steps :active="active" active-icon="success" active-color="#38f">
         <van-step>新建</van-step>
@@ -116,13 +61,7 @@
         <van-step>完成</van-step>
       </van-steps>
       <!-- 审批人 -->
-      <span class="fontSize">审批人：</span
-      ><input
-        type="text"
-        :value="flowData.userName"
-        readonly
-        class="approveInp"
-      />
+      <span class="fontSize">审批人：</span><input type="text" :value="flowData.userName" readonly class="approveInp" />
       <br />
       <!-- 是否通过 单选框-->
       <span class="fontSize">是否通过：</span>
@@ -133,19 +72,11 @@
       <br />
       <!-- 备注 -->
       <span class="fontSize remarks">备注：</span>
-      <textarea
-        v-model="flowData.remark"
-        style="width: 100%; height: 38px"
-        class="fontSize"
-      ></textarea>
+      <textarea v-model="flowData.remark" style="width: 100%; height: 38px" class="fontSize"></textarea>
       <!-- 确认和取消操作 -->
       <div class="fontSize but" style="magin-top: 10px">
-        <van-button size="small" type="primary" @click="confirmEvt"
-          >确定</van-button
-        >
-        <van-button size="small" type="default" @click="show = false"
-          >取消</van-button
-        >
+        <van-button size="small" type="primary" @click="confirmEvt">确定</van-button>
+        <van-button size="small" type="default" @click="show = false">取消</van-button>
       </div>
     </van-popup>
   </page-layout>
@@ -291,7 +222,7 @@ export default {
                 this.$toast.fail("删除失败");
               }
             })
-            .catch(() => {});
+            .catch(() => { });
           break;
         //确认采购订单
         case "confirm":

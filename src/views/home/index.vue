@@ -4,11 +4,11 @@
       <div>
         <van-swipe :autoplay="3000" indicator-color="white">
           <van-swipe-item>
-            <div ref="lineNode" class="chart-box"></div
-          ></van-swipe-item>
+            <div ref="lineNode" class="chart-box"></div>
+          </van-swipe-item>
           <van-swipe-item>
-            <div ref="pieNode" class="chart-box"></div
-          ></van-swipe-item>
+            <div ref="pieNode" class="chart-box"></div>
+          </van-swipe-item>
         </van-swipe>
       </div>
       <ul class="func-box">

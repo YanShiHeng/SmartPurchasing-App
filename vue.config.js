@@ -5,6 +5,8 @@
 // 因为这个配置是webpack来进行加载的，也就是这个文件需要使用NodeJS来执行，因此这个文件修改以后需要重新启动服务
 
 module.exports = {
+  // 打包专用路径
+  publicPath:'./',
   // 关闭lint检查
   lintOnSave: false,
   // 配置项目页面

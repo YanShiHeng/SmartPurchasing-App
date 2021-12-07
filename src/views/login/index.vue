@@ -8,45 +8,24 @@
         <em>{{ welText }}</em>
       </div>
       <!-- 在组件上添加的事件不再是组件的原生事件，需要使用修饰符：'.native' -->
-      <van-circle
-        v-model="currentRate"
-        :rate="rate"
-        :clockwise="false"
-        size="36px"
-        @click.native="closeWelcome"
-        :text="`${Math.ceil(currentRate / 20)}`"
-      />
+      <van-circle v-model="currentRate" :rate="rate" :clockwise="false" size="36px" @click.native="closeWelcome" :text="`${Math.ceil(currentRate / 20)}`" />
     </div>
     <!-- 登录页 -->
     <div class="login welcomePart" v-else>
       <span class="login-title">凌动智能采购系统</span>
       <div class="login-item">
         <!-- {phone: this.phone, vdtCode: this.vdtCode} => loginObj = {Phone, vdtCode} -->
-        <input
-          type="text"
-          v-model="loginObj.phone"
-          placeholder="输入登录手机号"
-        />
+        <input type="text" v-model="loginObj.phone" placeholder="输入登录手机号" />
       </div>
       <div class="login-item code">
-        <input
-          type="text"
-          v-model="loginObj.vdtCode"
-          placeholder="输入验证码"
-        />
+        <input type="text" v-model="loginObj.vdtCode" placeholder="输入验证码" />
         <span @click="getVdtCodeEvt">{{ codeText }}</span>
       </div>
-      <van-checkbox v-model="remember" checked-color="#ff5513"
-        >记住手机号？</van-checkbox
-      >
-      <van-checkbox v-model="auto" checked-color="#ff5513"
-        >七天免登录？</van-checkbox
-      >
-      <van-button type="primary" @click="loginEvt" block color="#ff5513"
-        >登录</van-button
-      >
+      <van-checkbox v-model="remember" checked-color="#ff5513">记住手机号？</van-checkbox>
+      <van-checkbox v-model="auto" checked-color="#ff5513">七天免登录？</van-checkbox>
+      <van-button type="primary" @click="loginEvt" block color="#ff5513">登录</van-button>
     </div>
-    <div class="foot">&copy; 2021- 千锋教育 copy right</div>
+    <div class="foot">&copy; copy right</div>
   </div>
 </template>
 <script>
